@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/vite.svg"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <meta
+      name="description"
+      content="Portofolio Dimas Saputra"
+    />
+    <title>Dimas Saputra</title>
+  </head>
+  <body>
+    <div id="app"><!--ssr-outlet--></div>
+    <script
+      type="module"
+      src="/src/entry-client.tsx"
+    ></script>
+    <script>
+      window.onload = function () {
+        const pageTitle = document.title;
+        const attentionMessage = "Don't leave me:(";
+
+        document.addEventListener("visibilitychange", function (event) {
+          event.preventDefault();
+          const isPageActive = !document.hidden;
+
+          if (!isPageActive) {
+            document.title = attentionMessage;
+          } else {
+            document.title = pageTitle;
+          }
+        });
+      };
+    </script>
+  </body>
+</html>

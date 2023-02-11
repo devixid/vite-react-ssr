@@ -1,0 +1,90 @@
+{
+  "name": "porto",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "main": "server.ts",
+  "scripts": {
+    "preview": "vite preview",
+    "prepare": "husky install",
+    "commit": "git add . && cz",
+    "push": "yarn commit && git push origin main",
+    "dev": "NODE_ENV=development nodemon server.ts",
+    "build:client": "vite build --outDir dist/client",
+    "build": "yarn build:client && yarn build:server",
+    "build:server": "vite build --ssr src/entry-server.tsx --outDir dist/server",
+    "lint": "eslint --cache \"**/*.{js,jsx,ts,tsx,md,mdx}\"",
+    "lint:fix": "eslint --fix \"**/*.{js,jsx,ts,tsx,md,mdx}\"",
+    "type-check": "tsc --project tsconfig.json --pretty --noEmit",
+    "format": "prettier --config .prettierrc.json --write \"**/*.{js,jsx,ts,tsx,md,mdx}\"",
+    "format:diff": "prettier --config .prettierrc.json --list-different \"**/*.{js,jsx,ts,tsx,md,mdx}\""
+  },
+  "lint-staged": {
+    "**/*.{html,css,scss,less,json,js,jsx,ts,tsx,md,mdx}\"": [
+      "prettier --config .prettierrc.json --write \"**/*.{html,css,scss,less,json,js,jsx,ts,tsx,md,mdx}\""
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "browserslist": {
+    "production": [
+      ">0.01%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      ">0.01%",
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "dependencies": {
+    "@nextui-org/react": "^1.0.0-beta.11",
+    "@react-aria/ssr": "^3.4.1",
+    "@svgr/rollup": "^6.5.1",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "helmet": "^6.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.3",
+    "sirv": "^2.0.2"
+  },
+  "devDependencies": {
+    "@jridgewell/sourcemap-codec": "^1.4.14",
+    "@rollup/plugin-terser": "^0.4.0",
+    "@types/cors": "^2.8.13",
+    "@types/express": "^4.17.15",
+    "@types/node": "^18.11.18",
+    "@types/nodemon": "^1.19.2",
+    "@types/react": "^18.0.24",
+    "@types/react-dom": "^18.0.8",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.47.1",
+    "@vitejs/plugin-react-swc": "^3.0.1",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.0.1",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-standard-with-typescript": "^23.0.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-n": "^15.0.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.31.11",
+    "husky": "^8.0.0",
+    "lint-staged": "^13.1.0",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.8.0",
+    "sass": "^1.56.1",
+    "typescript": "*",
+    "vite": "^4.0.3",
+    "vite-plugin-pwa": "^0.14.0",
+    "workbox-build": "^6.5.4",
+    "workbox-window": "^6.5.4"
+  }
+}
