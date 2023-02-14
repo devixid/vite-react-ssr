@@ -1,12 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Routes, Route, useLocation } from "react-router-dom";
-import { Suspense, useEffect, useState } from "react";
-import Loading from "@/pages/Loading";
+import { useEffect, useState, memo } from "react";
 import { Container, getDocumentTheme, NextUIProvider } from "@nextui-org/react";
 import { darkTheme, lightTheme } from "@/utils";
-import { Layout, Home, Contact, NavbarApp } from "@/imports";
+import { NavbarApp } from "@/components";
+import Home from "@/pages";
+import About from "@/pages/about";
+import Layout from "@/layouts";
 
-export function AppRoutes(): JSX.Element {
+function AppRoutes(): JSX.Element {
   const location = useLocation();
   const [isDark, setIsDark] = useState<boolean>(false);
 
@@ -29,24 +31,24 @@ export function AppRoutes(): JSX.Element {
 
   return (
     <NextUIProvider theme={isDark ? darkTheme : lightTheme}>
-      <Suspense fallback={<Loading />}>
-        <Layout>
-          {location.pathname !== "/loading" && <NavbarApp />}
-          <Container>
-            <Routes>
-              <Route
-                path="/"
-                element={<h1>Hallo Dunia</h1>}
-              />
-              <Route
-                path="/contact"
-                element={<Contact />}
-              />
-            </Routes>
-          </Container>
-          {/* {location.pathname !== "/loading" && <Footer />} */}
-        </Layout>
-      </Suspense>
+      <Layout>
+        {location.pathname !== "/loading" && <NavbarApp />}
+        <Container>
+          <Routes>
+            <Route
+              path="/"
+              element={<Home />}
+            />
+            <Route
+              path="/about"
+              element={<About />}
+            />
+          </Routes>
+        </Container>
+        {/* {location.pathname !== "/loading" && <Footer />} */}
+      </Layout>
     </NextUIProvider>
   );
 }
+
+export default memo(AppRoutes);

@@ -3,16 +3,14 @@ import { StaticRouter } from "react-router-dom/server";
 import { ScrollToTop } from "@/utils";
 import "@/sass/root.scss";
 import { AppRoutes } from "@/routes";
-import { SSRProvider } from "@react-aria/ssr";
+import { SSRProvider } from "react-aria";
 
 interface IRenderProps {
   path: string;
 }
 
-export const render = ({
-  path,
-}: IRenderProps): ReactDOMServer.PipeableStream => {
-  return ReactDOMServer.renderToPipeableStream(
+export const render = ({ path }: IRenderProps) => {
+  return ReactDOMServer.renderToString(
     <StaticRouter location={path}>
       <SSRProvider>
         <ScrollToTop />

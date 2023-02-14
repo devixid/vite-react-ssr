@@ -24,7 +24,7 @@
   "ts-node": {
     "esm": true
   },
-  "include": ["src", "src/svg.d.ts", "server.ts"],
+  "include": ["src", "src/types/module.d.ts", "server.ts"],
   "exclude": ["node_modules", "build"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

@@ -1,6 +1,7 @@
 import { Spacer, Text, Grid } from "@nextui-org/react";
+import { memo } from "react";
 
-export default function Home(): JSX.Element {
+function Home(): JSX.Element {
   return (
     <>
       <Spacer y={2} />
@@ -49,3 +50,5 @@ export default function Home(): JSX.Element {
     </>
   );
 }
+
+export default memo(Home);

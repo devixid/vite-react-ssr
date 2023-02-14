@@ -7,9 +7,10 @@ import {
   Link as NextLink,
 } from "@nextui-org/react";
 import { Link } from "react-router-dom";
+import { memo } from "react";
 import { MoonIcon, SunIcon } from "@/assets";
 
-export default function NavbarApp(): JSX.Element {
+function NavbarApp(): JSX.Element {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { type, isDark } = useTheme();
 
@@ -105,3 +106,5 @@ export default function NavbarApp(): JSX.Element {
     </Navbar>
   );
 }
+
+export default memo(NavbarApp);

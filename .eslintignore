@@ -4,6 +4,7 @@ dist
 coverage
 
 vite.config.ts
-*.md
+.github
+README.md
 package-lock.json
 yarn.lock
